@@ -1,16 +1,20 @@
 #!/bin/sh
 
+SEQUENCE=$1
+DPORTS=$2
+INTERFACE=$3
+
 echo '[options]
         logfile = /var/log/knockd.log
 
 [openclosePort]
-        sequence      = '$1'
+        sequence      = '$SEQUENCE'
         seq_timeout   = 15
         tcpflags      = syn
-        start_command = /sbin/iptables -A INPUT -s %IP% -p tcp --dport '$2' -j ACCEPT
+        start_command = /sbin/iptables -A INPUT -s %IP% -p tcp --dport '$DPORTS' -j ACCEPT
         cmd_timeout   = 10
-        stop_command  = /sbin/iptables -D INPUT -s %IP% -p tcp --dport '$2' -j ACCEPT
+        stop_command  = /sbin/iptables -D INPUT -s %IP% -p tcp --dport '$DPORTS' -j ACCEPT
 
 ' > /etc/knockd.conf
 
-knockd -i $3
+knockd -i $INTERFACE
