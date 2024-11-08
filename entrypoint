@@ -1,8 +1,19 @@
 #!/bin/sh
 
-SEQUENCE=$1
-DPORTS=$2
-INTERFACE=$3
+SEQUENCE="$KNOCKD_SEQUENCE"
+DPORTS="$KNOCKD_DPORTS"
+INTERFACE="$KNOCKD_INTERFACE"
+
+if [ -n "$KNOCKD_SEQUENCE_FILE" ]; then
+        SEQUENCE="$(cat \"$KNOCKD_SEQUENCE_FILE\")"
+fi
+if [ -n "$KNOCKD_DPORTS_FILE" ]; then
+        DPORTS="$(cat \"$KNOCKD_DPORTS_FILE\")"
+fi
+if [ -n "$KNOCKD_INTERFACE_FILE" ]; then
+        INTERFACE="$(cat \"$KNOCKD_INTERFACE_FILE\")"
+fi
+
 
 echo '[options]
         logfile = /var/log/knockd.log
