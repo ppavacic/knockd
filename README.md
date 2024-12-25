@@ -7,7 +7,7 @@ Opens port on ALL interfaces for IP that knocks correctly.
 ### Standard usage
 
 ```bash
-sudo docker run \                                            
+sudo docker run \
   --net=host \
   --privileged \
   --name knockd \
@@ -21,7 +21,7 @@ sudo docker run \
 ### Secrets file usage
 
 ```bash
-sudo docker run \                                            
+sudo docker run \
   --net=host \
   --privileged \
   --name knockd \
@@ -39,7 +39,7 @@ Useful in compose files.
 ### Standard example
 
 ```bash
-sudo docker run \                                            
+sudo docker run \
   --net=host \
   --privileged \
   --name knockd \
